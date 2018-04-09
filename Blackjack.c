@@ -96,6 +96,7 @@ void PlayerTurn(){
 
 void DealerTurn(){
 	printf("Dealer plays...\n");
+	UpdateTotal(dealerHand, false);
 	while(true){
 		if (dealerTotal == 21){
 			break;
@@ -167,6 +168,8 @@ void UpdateTotal(Card* array[], bool isPlayer){
 			if (array[i]->rank==14){
 				sum += 1;
 				acePresent=true;
+			} else if(array[i]->rank>=10 && array[i]->rank<14){
+				sum += 10;
 			} else {
 				sum += array[i]->rank;
 			}
